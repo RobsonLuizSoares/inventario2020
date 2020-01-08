@@ -1,0 +1,94 @@
+<%- include('../partials/header') %>
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid my-3">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Inventário 2020</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Início</a></li>
+              <li class="breadcrumb-item active"><a href="/unidades">Todas Unidades</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <div class='container'>
+<h3> Cadastrar nova Unidade</h3>
+<div class='row'>
+  <div class='container-fluid my-3'>
+    <button class='btn btn-sm btn-secondary' onclick='goBack()' type="">Voltar </button>
+  </div>
+</div>
+<form method='post'>
+  <div class='row'>
+    <div class='col-md-6'>
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name='nome' placeholder="Nome da Unidade" aria-describedby='help'>
+        <% if(erro && erro.indexOf('nome')>=0) { %>
+        <small id="help" class="form-text text-danger">
+          Por favor, insira o nome da Unidade.
+        </small>
+        <% } %>
+      </div>
+    </div>
+    <div class='col-md-6'>
+      <div class="form-group">
+      <label for="responsavel">Responsável:</label>
+      <input type="text" class="form-control" id="responsavel" name='responsavel' placeholder="Responsável pela Unidade">
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <label for="ul">UL:</label>
+        <input type="text" class="form-control" id="ul" name='ul' placeholder="UL da Unidade">
+      </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <label for="grupo">Grupo:</label>
+        <input type="text" class="form-control" id="grupo" name='grupo' placeholder="Grupo da Unidade" aria-describedby='helpGrupo'>
+        <% if(erro && erro.indexOf('grupo')>=0) { %>
+        <small id="helpGrupo" class="form-text text-danger">
+          Por favor, insira o grupo da Unidade.
+        </small>
+        <% } %>
+      </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <label for="bens">Leitura dos Bens:</label>
+        <select class="form-control" id="bens" name='bens'>
+          <option value='pendente'>Pendente</option>
+          <option value='ok'>Bens Lidos</option>
+        </select>
+      </div>
+    </div>
+    <div class='col-md-3'>
+      <div class="form-group">
+        <label for="termo">Entrega do Termo:</label>
+        <select class="form-control" id="termo" name='termo'>
+          <option value='pendente'>Pendente</option>
+          <option value='ok'>Termo Entregue</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <button class='btn btn-primary' type="submit">Cadastrar</button>
+</form>
+</div>
+</div>
+<script>
+  function goBack() {
+    window.history.back(2)
+  }
+</script>
+<%- include('../partials/footer') %>

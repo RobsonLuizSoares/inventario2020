@@ -1,0 +1,51 @@
+ <%- include('partials/header') %>
+ <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+         <div class="container-fluid my-3">
+          
+          <div class="row mb-2">
+            <div class="col-sm-8">
+          </div><!-- /.col -->
+            <div class="col-sm-4">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active"><a href="/unidades">Todas Unidades</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <div class='container'>
+        <%= JSON.stringify(unidade) %> <br>
+       
+       <% unidade.forEach(unity => { %>
+        <form method='post'>
+          <div class="form-group">
+            <input type="text" class="form-control" id="unidade" placeholder="Nome da Unidade" name='unidade' value='<%= unity[0].nome %>'>
+          </div>
+            <% }) %>
+          <div class='row'>
+            <div class='col-md-6'>
+              <div class="form-group">
+                <label for="termo">Pendência Termo</label>
+                <select disabled class="form-control" id="termo" name='termo'>
+                  <option value='pendente'>Sim</option>
+                </select>
+              </div>
+            </div>
+            <div class='col-md-6'>
+              <div class="form-group">
+                <label for="termo">Pendencia Bens</label>
+                <select disabled class="form-control" id="bens" name='bens'>
+                  <option  value='pendente'>Sim</option>
+                </select>
+              </div>
+            </div>
+          </div>
+         <button class='btn btn-primary' type="submit">Editar Pendências</button>
+        </form>
+        </div>
+   </div>
+
+ <%- include('partials/footer') %>

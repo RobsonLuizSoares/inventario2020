@@ -1,0 +1,77 @@
+
+<%- include('../partials/header') %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+         <div class="container-fluid my-3">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Inventário 2020</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active"><a href="/unidades/todas">Todas Unidades</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <div class="content">
+      
+        <div class="container-fluid">
+          <div class="row">
+               <% unidades.forEach(unidade => { %>
+            <div class="col-md-4">
+             <!-- /.col-md-6 -->
+
+            
+              <div class="card card-primary card-outline text-center " >
+                <div class="card-header text-center ">
+                  <a href="/unidades/info/<%= unidade._id%>"><h6 class="m-0 text-center">Unidade <%= unidade.nome %></h6></a>
+                  <a href="/unidades/editar/<%= unidade._id %>"><button class='btn btn-info btn-xs' type="">editar</button></a>
+                  <a href="/unidades/excluir/<%= unidade._id %>"><button class='btn btn-warning btn-xs' type="">excluir</button></a>
+                </div>
+                <div class="card-body text-center">
+                  <h6 class="text-center  mb-3 ">Responsável: <%- unidade.responsavel %> </h6>
+                   <% if(unidade.bens === 'pendente') { %> 
+                   <button class='btn btn-danger btn-sm' type="">Leitura Pendente</button>
+                  <% } else { %> 
+                  <button class='btn btn-success btn-sm' type="">Leitura Concluída</button>
+                  <% } %>
+                  <% if(unidade.termo === 'pendente') { %>
+                  <button class='btn btn-danger btn-sm' type="">Termo Pendente</button>
+                  <% } else { %> 
+                  <button class='btn btn-success btn-sm' type="">Termo Entregue</button>
+                  <% } %>
+                  
+                </div>
+              </div>
+       
+            <!-- /.col-md-6 -->
+          </div>
+          <!-- /.row -->
+               <% }) %>
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    </div>
+    <!-- /.content-wrapper -->
+
+      <!-- Control sidebar content goes here -->
+    <!-- Control Sidebar 
+    <aside class="control-sidebar control-sidebar-dark">
+      <div class="">
+        <h5>Title</h5>
+        <p>Sidebar content TESTE AQUI</p>
+      </div>
+    </aside>
+     /.control-sidebar -->
+
+<%- include('../partials/footer') %>

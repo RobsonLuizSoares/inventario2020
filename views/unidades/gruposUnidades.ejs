@@ -1,0 +1,148 @@
+
+<%- include('../partials/header') %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+         <div class="container my-3">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Inventário 2020</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active"><a href="/unidades/todas">Todas Unidades</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <div class="content">
+      <div class='row'>
+        <div class='container my-3'>
+          <button class='btn btn-sm btn-secondary' onclick='goBack()' type="">Voltar </button>
+        </div>
+      </div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-4 '>
+          <% if(percentualBens === 100) { %>
+          <div class='alert percentual text-center'>
+            <h6 class='text-center'>Percentual Entrega dos Termos:&nbsp; <strong><%= JSON.stringify(percentualTermo)%>%</strong></h6>
+          </div>
+          <% } else if(percentualTermo > 50){ %>
+          <div class=' alert percentual'>
+            <h6 class='text-center'>Percentual Entrega dos Termos:&nbsp; <strong><%= JSON.stringify(percentualTermo)%>%</strong></h6>
+          </div>
+          <% } else {  %>        
+          <div class='alert percentual'>
+            <h6 class='text-center text-dark'>Percentual Entrega dos Termos:&nbsp; <strong><%= JSON.stringify(percentualTermo)%>%</strong></h6>
+          </div>
+          <% } %>       
+        </div>
+        <div class='col-md-4'>
+        <% if(percentualBens === 100) { %>
+          <div class='alert percentual'>
+            <h6 class='text-center'>Percentual Leitura dos Bens:&nbsp; <strong><%= JSON.stringify(percentualBens)%>%</strong></h6>
+          </div>
+          <% } else if(percentualBens > 50){ %>
+          <div class='alert percentual'>
+            <h6 class='text-center'>Percentual Leitura dos Bens:&nbsp; <strong><%= JSON.stringify(percentualBens)%>%</strong></h6>
+          </div>
+          <% } else {  %>        
+          <div class='alert percentual'>
+            <h6 class='text-center'>Percentual Leitura dos Bens:&nbsp; <strong><%= JSON.stringify(percentualBens)%>%</strong></h6>
+          </div>
+          <% } %>
+        </div>
+        <% if(percentualBens === 100 && percentualTermo === 100) {%>
+          <div class='col-md-4'>
+            <div class='alert alert-success'>
+              <h5 class='text-center'>100% das Unidades foram Inventariadas</h5>
+            </div>        
+          </div>
+        <% } else {  %>
+          <div class='col-md-4'>
+              <div class='alert percentual'>
+                <h6 class='text-center'>Unidades em Andamento</h6>
+              </div>        
+          </div>
+        <% } %>
+      </div>
+      
+        
+      
+      <div class='row'>
+        <div class='col-md-3'>
+          <a href="/unidades/pendencias/<%= unidades[0].grupo %>/termo/pendente"><div class='alert cardStatus'>
+            <h6 class='text-white text-center'>Unidades com Termo Pendente </h6>
+          </div></a>
+        </div>
+      
+        <div class='col-md-3'>
+          <a href="/unidades/pendencias/<%= unidades[0].grupo %>/termo/ok"><div class='alert cardStatus'>
+            <h6 class='text-white text-center'>Unidades com Termo Entregue </h6>
+          </div></a>
+        </div>
+    
+
+        <div class='col-md-3'>
+          <a href="/unidades/pendencias/<%= unidades[0].grupo %>/bens/pendente"><div class='alert cardStatus'>
+            <h6 class='text-white text-center'>Unidades com Bens Pendentes</h6>
+          </div></a>
+        </div>
+      
+        <div class='col-md-3'>
+          <a href="/unidades/pendencias/<%= unidades[0].grupo %>/bens/ok"><div class='alert cardStatus'>
+            <h6 class='text-white text-center'>Unidades com Bens Lidos </h6>
+          </div></a>
+        </div>
+      </div>
+        <div class="container">
+          <div class="row ">
+               <% unidades.forEach(unidade => { %>
+            <div class="col-md-4 my-3">
+              <div class="card card-outline text-center " >
+                <div class="card-header text-center" style='min-height: 5rem;'>
+                  <a href="/unidades/info/<%= unidade._id%>"><h6 class="m-0 text-center my-2"><%= unidade.nome %></h6></a>
+                </div>
+                
+                <div class="card-body text-center" style='min-height: 10rem;'>
+                  <h6 class="text-center  mb-3 ">Responsável: &nbsp; <%- unidade.responsavel %> </h6>
+                   <% if(unidade.bens === 'pendente') { %> 
+                   <button class='btn btn-danger btn-sm mr-2' type="">Leitura Pendente</button>
+                  <% } else { %> 
+                  <button class='btn btn-success btn-sm mr-2' type="">Leitura Concluída</button>
+                  <% } %>
+                  <% if(unidade.termo === 'pendente') { %>
+                  <button class='btn btn-danger btn-sm' type="">Termo Pendente</button>
+                  <% } else { %> 
+                  <button class='btn btn-success btn-sm' type="">Termo Entregue</button>
+                  <% } %>
+                </div>
+                <div class='card-footer text-center footerCard'>
+                  <a href="/unidades/editar/<%= unidade._id %>"><button class='btn btn-info btn-sm mr-2' type="">editar</button></a>
+                  <a href="/unidades/excluir/<%= unidade._id %>"><button class='btn  btn-warning btn-sm ml-2' type="">excluir</button></a>
+                </div>
+
+              </div>
+            </div>
+               <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     <script>
+        function goBack() {
+          window.history.back()
+        }
+      </script>
+
+<%- include('../partials/footer') %>

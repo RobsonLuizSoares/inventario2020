@@ -1,0 +1,134 @@
+ <%- include('partials/header') %>
+ 
+ <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+        <% unidade.forEach( unity => { %>
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h3>Pendências da UL <%= unity[0].nome %></h3>
+                 <hr>
+              <ul class="ml-4 mb-0 fa-ul text-muted">
+                <li class="small mb-3"><span class="fa-li"><i class="fas fa-user"></i></span>Responsável: &nbsp;
+                <%= unity[0].responsavel %> 
+                </li>
+                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Grupo Unidade: &nbsp;
+                  <%= locais.filter( label => label.id === unity[0].grupo)[0].name %>
+                </li>
+                </ul>
+              <hr>
+              <div class=''>
+              <a href="/unidades/edit/<%= unity[0].id %>"><button type="" class='btn btn-xs btn-outline-primary'>Editar</button></a>
+                <button class='btn btn-primary btn-xs ml-2' onclick='goBack()' type="button"> Voltar</button> 
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">Unidade</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+                     
+                    
+                     
+      <section class="content">
+
+        <!-- Default box -->
+         <div class='row'>
+            <div class='col-md-3'>
+              <a href="/unidades/edit/<%= unity[0].id %>"><div class='alert alert-info'><h6>Termo Pendente</h6></div></a>
+            </div>
+            <div class='col-md-3'>
+              <a href="/unidades/termoOk/<%= unity[0].id %>"><div class='alert alert-info'><h6>Termo OK</h6></div></a>
+            </div>
+            <div class='col-md-3'>
+              <a href=""><div class='alert alert-info'><h6>Bens Pendentes</h6></div></a>
+            </div>
+            <div class='col-md-3'>
+              <a href=""><div class='alert alert-info'><h6>Bens OK</h6></div></a>
+            </div>
+         </div>
+          
+        <div class="card card-solid" style='min-height: 350px;'>
+          <div class="card-body pb-0">
+              <h6>JSON: <%= JSON.stringify(unidade) %></h6>
+            <div class="row d-flex align-items-stretch">
+              <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                <% if(unity[0].termo === 'pendente') { %>
+                  <div class="card bg-light" style='width:25rem;'>
+                    <div class="card-header text-muted border-bottom-0">
+                    Inventário 2020
+                    </div>
+                    <div class="card-body pt-0" >
+                      <div class="row">
+                        <div class="col-12 ">
+                          <h2 class="lead"><b>Termo de Responsabilidade Pendente</b></h2>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+                <% if(unity[0].termo === 'ok') { %>
+                  <div class="card bg-success" style='width:25rem;'>
+                    <div class="card-header text-white border-bottom-0">
+                    Inventário 2020
+                    </div>
+                    <div class="card-body pt-0" >
+                      <div class="row">
+                        <div class="col-12 ">
+                          <h2 class="lead"><b>Termo de Responsabilidade Entregue</b></h2>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+                <% if(unity[0].bens === 'pendente') { %>
+                  <div class="card bg-light ml-3" style='width:25rem;'>
+                    <div class="card-header text-muted border-bottom-0">
+                    Inventário 2020
+                    </div>
+                    <div class="card-body pt-0" >
+                      <div class="row">
+                        <div class="col-12 ">
+                          <h2 class="lead"><b>Leitura de Bens Pendente</b></h2>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+                <% if(unity[0].bens === 'ok') { %>
+                  <div class="card bg-success ml-3" style='width:25rem;'>
+                    <div class="card-header text-white border-bottom-0">
+                    Inventário 2020
+                    </div>
+                    <div class="card-body pt-0" >
+                      <div class="row">
+                        <div class="col-12 ">
+                          <h2 class="lead"><b>Leitura de Bens Completa</b></h2>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+              <% }) %>
+                </div>
+                
+                  
+                  
+              </section>
+          </div>
+                      
+<script>
+  function goBack() {
+    window.history.back()
+  }
+</script>
+<%- include('partials/footer') %>

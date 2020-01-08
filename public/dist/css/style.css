@@ -1,0 +1,50 @@
+.gruposUnidade {
+  background-color: rgb(121, 32, 121);
+}
+
+.gruposUnidade:hover {
+  background-color: rgb(128, 50, 200);
+}
+
+.centerLink {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: blueviolet;
+}
+
+.entrar {
+  font-weight: 600;
+  width: 125px;
+  background-color: rgb(240, 81, 33);
+}
+
+.entrar:hover {
+  background-color: rgb(128, 50, 200);
+}
+
+.textoEntrada {
+  margin: 0;
+  color: aliceblue;
+  font-size: 3em;
+}
+
+.coverEntrada {
+  text-shadow: black 1px 1px;
+  height: 100vh;
+  background-color: rgb(135, 5, 211);
+}
+
+.footerCard {
+  background-color: rgb(189, 178, 178);
+  opacity: 0.8;
+}
+
+.cardStatus {
+  background-color: rgb(112, 141, 194);
+}
+
+.percentual {
+  background-color: rgb(169, 155, 248);
+}
