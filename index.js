@@ -7,7 +7,7 @@ const unidadesRoute = require('./routes/unidades')
 const indexRoute = require('./routes/index')
 
 const port = process.env.PORT || 3000
-const mongo = 'mongodb+srv://robson:lya250916@inventario20-5omym.mongodb.net/test?retryWrites=true&w=majority'
+const mongo = 'mongodb+srv://robson:lya250916@inventario2020-h4h53.mongodb.net/test?retryWrites=true&w=majority'
 
 const User = require('./models/User')
 const mongoose = require('mongoose')
