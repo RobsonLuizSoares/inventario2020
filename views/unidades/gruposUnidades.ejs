@@ -8,7 +8,7 @@
          <div class="container my-1">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Inventário 2020</h1>
+              <h1 class="m-0 text-dark">Inventário 2020 -  <%= labelGrupo.filter( label => label.id == unidades[0].grupo)[0].name %></h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -29,45 +29,7 @@
         </div>
       </div>
     <div class='container'>
-    <!-- BARRA DE PROGRESSO BENS -->
-    <div class='card card-outline bg-light py-2'>
-      <div>
-       <h6 class='text-center'>
-       <span> <button class='btn btn-secondary btn-xs mr-2' type="" style='min-width: 45px;'> 0% </button></span>
-        Progresso das UL da Unidade &nbsp; <%= labelGrupo.filter( label => label.id == unidades[0].grupo)[0].name %>
-        <span> <button class='btn btn-primary btn-xs ml-2'type=""> 100% </button></span>
-        </h6>
-   
-      </div>
-    
-    <div class='row'>
-      <div class='col-md-1  my-1'>
-        <h6 class='ml-2 my-auto'>Bens</i></h6>      
-      </div>
-      <div class='col-md-11'>
-        <div class='row bg-secondary my-1' style='width: 900px; height: 30px;'>
-          <div class='bg-primary' style='width: <%= percentualBens*9 %>px; heigth: 30px; '>
-          </div> 
-        </div>
-      </div>
-    </div>
-     <!-- FIM BARRA DE PROGRESSO BENS -->
-
-     <!-- BARRA DE PROGRESSO Termos -->
-    <div class='row'>
-      <div class='col-md-1  my-1'>
-        <h6 class='ml-2'>Termos </h6>      
-      </div>
-      <div class='col-md-11'>
-        <div class='row bg-secondary my-1' style='width: 900px; height: 30px; '>
-          <div class='bg-primary' style='width: <%= percentualTermo*9 %>px; heigth: 30px;'>
-          </div> 
-        </div>
-      </div>
-    </div>
-    </div>
-     <!-- FIM BARRA DE PROGRESSO Termos -->
-      <div class='row'>
+       <div class='row'>
              <% if(percentualBens === 100 && percentualTermo === 100) {%>
           <div class='col-md-12'>
             <div class='alert alert-success'>
