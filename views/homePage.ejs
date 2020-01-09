@@ -12,12 +12,16 @@
     <title>Inventário 2020</title>
   </head>
   <body>
-    
+   
   <div class='coverEntrada  d-flex w-150 h-150  mx-auto flex-column'>
     <div class='alert centerLink'>
       <h1 class='text-center textoEntrada'>Sistema de Registro de Ocorrências</h1>
     </div>
-     <h5 class='text-center'><a class='' href="/unidades"><button class='text-white entrar btn-lg' type="">Entrar</button></a></h5>
+  <% if(!locals.user) { %>
+     <h5 class='text-center'><a class='' href="/login"><button class='text-white entrar btn-lg' type="">Entrar</button></a></h5>
+  <% } else {  %>
+     <h5 class='text-center'><a class='' href="/unidades"><button class='text-white entrar btn-lg' type="">Voltar</button></a></h5>
+  <% } %>
   </div>
 
     <!-- Optional JavaScript -->

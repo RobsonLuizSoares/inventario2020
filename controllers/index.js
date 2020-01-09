@@ -1,7 +1,42 @@
-const home = (req, res) => {
+const home = async (req, res) => {
   res.render('homePage')
 }
 
+const login = (req, res) => {
+  res.render('login')
+}
+
+const logout = (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/')
+  })
+}
+
+const access = async ({ User }, req, res) => {
+  const { username, password } = req.body
+  const user = await User.findOne({ username: username })
+
+  if (user) {
+    const isValid = await user.checkPassword(password)
+
+    try {
+      if (isValid) {
+        req.session.user = user
+        res.redirect('/unidades')
+      } else {
+        res.redirect('/login')
+      }
+    } catch (error) {
+      console.log('error:', error)
+    }
+  } else {
+    res.redirect('/login')
+  }
+}
+
 module.exports = {
-  home
+  home,
+  login,
+  access,
+  logout
 }

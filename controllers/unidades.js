@@ -201,7 +201,7 @@ const grupos = async ({ Unidade }, req, res) => {
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
-  res.render('unidades/gruposUnidades', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk })
+  res.render('unidades/gruposUnidades', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk, labelGrupo })
 }
 
 const unidadeComPendenciaTermo = async ({ Unidade }, req, res) => {

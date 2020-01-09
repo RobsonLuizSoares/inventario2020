@@ -42,6 +42,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <a href="/unidades/nova" class="nav-link text-dark">Nova Unidade</a>
         </li>
       </ul>
+      <div class='loginUser'>
+      <% if('user' in locals) { %>
+        
+        <span><a><%= locals.user.username %></a>&nbsp; || &nbsp; <a class='btn btn-sm btn-outline-danger' href="/logout">Sair</a></span>
+     
+        <% }  %>
+          
+    
+      </div>
 
            <!-- Right navbar links -->
      

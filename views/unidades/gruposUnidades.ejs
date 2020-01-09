@@ -5,7 +5,7 @@
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <div class="content-header">
-         <div class="container my-3">
+         <div class="container my-1">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">Inventário 2020</h1>
@@ -25,12 +25,57 @@
       <div class="content">
       <div class='row'>
         <div class='container my-3'>
-          <button class='btn btn-sm btn-secondary' onclick='goBack()' type="">Voltar </button>
+          <button class='btn btn-sm btn-info' onclick='goBack()' type="">Voltar </button>
         </div>
       </div>
     <div class='container'>
+    <!-- BARRA DE PROGRESSO BENS -->
+    <div class='card card-outline bg-light py-2'>
+      <div>
+       <h6 class='text-center'>
+       <span> <button class='btn btn-secondary btn-xs mr-2' type="" style='min-width: 45px;'> 0% </button></span>
+        Progresso das UL da Unidade &nbsp; <%= labelGrupo.filter( label => label.id == unidades[0].grupo)[0].name %>
+        <span> <button class='btn btn-primary btn-xs ml-2'type=""> 100% </button></span>
+        </h6>
+   
+      </div>
+    
+    <div class='row'>
+      <div class='col-md-1  my-1'>
+        <h6 class='ml-2'>Leitura Bens </h6>      
+      </div>
+      <div class='col-md-11'>
+        <div class='row bg-secondary my-1' style='width:65vw; height: 30px;'>
+          <div class='bg-primary' style='width: <%= percentualBens*10 %>px; heigth: 30px; '>
+          </div> 
+        </div>
+      </div>
+    </div>
+     <!-- FIM BARRA DE PROGRESSO BENS -->
+
+     <!-- BARRA DE PROGRESSO Termos -->
+    <div class='row'>
+      <div class='col-md-1  my-1'>
+        <h6 class='ml-2'>Entrega Termos </h6>      
+      </div>
+      <div class='col-md-11'>
+        <div class='row bg-secondary my-1' style='width:65vw; height: 30px; '>
+          <div class='bg-primary' style='width: <%= percentualTermo*10 %>px; heigth: 30px;'>
+          </div> 
+        </div>
+      </div>
+    </div>
+    </div>
+     <!-- FIM BARRA DE PROGRESSO Termos -->
       <div class='row'>
-        <div class='col-md-4 '>
+             <% if(percentualBens === 100 && percentualTermo === 100) {%>
+          <div class='col-md-12'>
+            <div class='alert alert-success'>
+              <h5 class='text-center'>100% das Unidades foram Inventariadas</h5>
+            </div>        
+          </div>
+            <% } else {  %>
+        <div class='col-md-6 '>
           <% if(percentualBens === 100) { %>
           <div class='alert percentual text-center'>
             <h6 class='text-center'>Percentual Entrega dos Termos:&nbsp; <strong><%= JSON.stringify(percentualTermo)%>%</strong></h6>
@@ -45,7 +90,7 @@
           </div>
           <% } %>       
         </div>
-        <div class='col-md-4'>
+        <div class='col-md-6'>
         <% if(percentualBens === 100) { %>
           <div class='alert percentual'>
             <h6 class='text-center'>Percentual Leitura dos Bens:&nbsp; <strong><%= JSON.stringify(percentualBens)%>%</strong></h6>
@@ -60,23 +105,11 @@
           </div>
           <% } %>
         </div>
-        <% if(percentualBens === 100 && percentualTermo === 100) {%>
-          <div class='col-md-4'>
-            <div class='alert alert-success'>
-              <h5 class='text-center'>100% das Unidades foram Inventariadas</h5>
-            </div>        
-          </div>
-        <% } else {  %>
-          <div class='col-md-4'>
-              <div class='alert percentual'>
-                <h6 class='text-center'>Unidades em Andamento</h6>
-              </div>        
-          </div>
+    
         <% } %>
       </div>
-      
-        
-      
+    
+      <h5 class='text-center mt-2'> Pesquisa de UL por situação</h5>
       <div class='row'>
         <div class='col-md-3'>
           <a href="/unidades/pendencias/<%= unidades[0].grupo %>/termo/pendente"><div class='alert cardStatus'>

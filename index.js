@@ -5,6 +5,7 @@ const path = require('path')
 const adminRoute = require('./routes/admin')
 const unidadesRoute = require('./routes/unidades')
 const indexRoute = require('./routes/index')
+const session = require('express-session')
 
 const port = process.env.PORT || 3000
 const mongo = 'mongodb+srv://admin:lya250916@inventario2020-h4h53.mongodb.net/test?retryWrites=true&w=majority'
@@ -15,7 +16,7 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
 app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(session({ secret: 'inventario' }))
 app.use(express.static('public'))
 
 app.set('views', path.join(__dirname, 'views'))
@@ -34,6 +35,20 @@ const createInitialUser = async () => {
     console.log('user already exists')
   }
 }
+
+app.use((req, res, next) => {
+  if ('user' in req.session) {
+    res.locals.user = req.session.user
+  }
+  next()
+})
+
+app.use('/unidades', (req, res, next) => {
+  if ('user' in req.session) {
+    return next()
+  }
+  res.redirect('/login')
+})
 
 app.use('/', indexRoute)
 app.use('/unidades', unidadesRoute)
