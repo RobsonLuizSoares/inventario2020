@@ -1,14 +1,14 @@
-//const Unidade = require('../models/Unidade')
 
 labelsBens = [
   { id: 'pendente', name: 'Pendente' },
   { id: 'ok', name: 'Bens Lidos' }
 ]
+
 labelsTermo = [
   { id: 'pendente', name: 'Pendente' },
   { id: 'ok', name: 'Termo Entregue' }
 ]
-//<%= unidades.filter( label => label.unidades_id === termoUnidade[0].id)[0].nome %>
+
 labelGrupo = [
   { id: '1', name: 'Presidência' },
   { id: '2', name: 'Corregedoria' },
@@ -31,7 +31,6 @@ const home = async ({ Unidade }, req, res) => {
   const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
   const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
   const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
-  //const unidades = await Unidade.find({ grupo: req.params.grupo })
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
@@ -47,7 +46,6 @@ const todasUnidades = async ({ Unidade }, req, res) => {
   const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
   const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
   const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
-  //const unidades = await Unidade.find({ grupo: req.params.grupo })
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
@@ -70,16 +68,16 @@ const novaForm = async ({ Unidade }, req, res) => {
 }
 
 const novaProcess = async ({ Unidade }, req, res) => {
-  const totalUnidades = await Unidade.countDocuments()
+  /* const totalUnidades = await Unidade.countDocuments()
   const unidadePendenteTermo = await Unidade.countDocuments({ termo: 'pendente' })
   const unidadeTermoOk = await Unidade.countDocuments({ termo: 'ok' })
-  const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' })
+  const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' }) 
   const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
   const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
   const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
   const unidades = await Unidade.find({ grupo: req.params.grupo })
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
-  const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
+  const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))*/
 
   const unidade = await new Unidade(req.body)
   try {
@@ -132,16 +130,16 @@ const editarForm = async ({ Unidade }, req, res) => {
 
 const editarProcess = async ({ Unidade }, req, res) => {
 
-  const totalUnidades = await Unidade.countDocuments()
-  const unidadePendenteTermo = await Unidade.countDocuments({ termo: 'pendente' })
-  const unidadeTermoOk = await Unidade.countDocuments({ termo: 'ok' })
-  const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' })
-  const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
-  const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
-  const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
+  // const totalUnidades = await Unidade.countDocuments()
+  //const unidadePendenteTermo = await Unidade.countDocuments({ termo: 'pendente' })
+  //const unidadeTermoOk = await Unidade.countDocuments({ termo: 'ok' })
+  // const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' })
+  // const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
+  // const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
+  //const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
   //const unidades = await Unidade.find({ grupo: req.params.grupo })
-  const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
-  const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
+  //const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
+  // const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
   const unidade = await Unidade.findById({ _id: req.params.id })
   unidade.nome = req.body.nome
@@ -174,16 +172,16 @@ const info = async ({ Unidade }, req, res) => {
 
 const addComentario = async ({ Unidade }, req, res) => {
 
-  const totalUnidades = await Unidade.countDocuments()
-  const unidadePendenteTermo = await Unidade.countDocuments({ termo: 'pendente' })
-  const unidadeTermoOk = await Unidade.countDocuments({ termo: 'ok' })
-  const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' })
-  const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
-  const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
-  const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
+  //const totalUnidades = await Unidade.countDocuments()
+  //const unidadePendenteTermo = await Unidade.countDocuments({ termo: 'pendente' })
+  //const unidadeTermoOk = await Unidade.countDocuments({ termo: 'ok' })
+  //const unidadeBensOk = await Unidade.countDocuments({ bens: 'ok' })
+  //const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
+  //const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
+  //const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
   //const unidades = await Unidade.find({ grupo: req.params.grupo })
-  const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
-  const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
+  //const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
+  //const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
   await Unidade.findByIdAndUpdate({ _id: req.params.id }, { $push: { comentario: req.body.comentario } })
   res.redirect('/unidades/info/' + req.params.id)
@@ -197,7 +195,7 @@ const grupos = async ({ Unidade }, req, res) => {
   const unidadesGrupo = await Unidade.countDocuments({ grupo: req.params.grupo })
   const bensOk = await Unidade.countDocuments({ grupo: req.params.grupo, bens: 'ok' })
   const termoOk = await Unidade.countDocuments({ grupo: req.params.grupo, termo: 'ok' })
-  const unidades = await Unidade.find({ grupo: req.params.grupo })
+  const unidades = await Unidade.find({ grupo: req.params.grupo, $or: [{ termo: 'pendente' }, { bens: 'pendente' }] }).sort({ nome: 1 })
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
@@ -217,7 +215,7 @@ const unidadeComPendenciaTermo = async ({ Unidade }, req, res) => {
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
-  const unidades = await Unidade.find({ grupo: req.params.grupo, termo: 'pendente' })
+  const unidades = await Unidade.find({ grupo: req.params.grupo, termo: 'pendente' }).sort({ nome: 1 })
   res.render('unidades/pendencias', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk })
 }
 
@@ -234,7 +232,7 @@ const unidadeSemPendenciaTermo = async ({ Unidade }, req, res) => {
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
-  const unidades = await Unidade.find({ grupo: req.params.grupo, termo: 'ok' })
+  const unidades = await Unidade.find({ grupo: req.params.grupo, termo: 'ok' }).sort({ nome: 1 })
   res.render('unidades/pendencias', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk })
 }
 
@@ -251,7 +249,7 @@ const unidadesComPendenciaBens = async ({ Unidade }, req, res) => {
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
-  const unidades = await Unidade.find({ grupo: req.params.grupo, bens: 'pendente' })
+  const unidades = await Unidade.find({ grupo: req.params.grupo, bens: 'pendente' }).sort({ nome: 1 })
   res.render('unidades/pendencias', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk })
 }
 
@@ -268,13 +266,23 @@ const unidadeSemPendenciaBens = async ({ Unidade }, req, res) => {
   const percentualTermo = Math.floor(parseInt(termoOk * 100 / unidadesGrupo))
   const percentualBens = Math.floor(parseInt(bensOk * 100 / unidadesGrupo))
 
-  const unidades = await Unidade.find({ grupo: req.params.grupo, bens: 'ok' })
+  const unidades = await Unidade.find({ grupo: req.params.grupo, bens: 'ok' }).sort({ nome: 1 })
   res.render('unidades/pendencias', { unidades, totalUnidades, percentualTermo, percentualBens, unidadePendenteTermo, unidadeTermoOk, unidadeBensOk })
 }
+
+const unidadesOk = async ({ Unidade }, req, res) => {
+  const unidades = await Unidade.find({ $and: [{ termo: 'ok' }, { bens: 'ok' }] }).sort({ nome: 1 })
+  res.render('unidades/unidadesOk', { unidades })
+}
+const ok = async ({ Unidade }, req, res) => {
+  const unidadesTerminadas = await Unidade.find({ grupo: req.params.grupo, $and: [{ termo: 'ok' }, { bens: 'ok' }] }).sort({ nome: 1 })
+  res.render('unidades/grupoOk', { unidadesTerminadas })
+}
+
 
 module.exports = {
   home, novaForm, novaProcess,
   excluir, editarForm, editarProcess,
-  info, addComentario, grupos,
+  info, addComentario, grupos, ok, unidadesOk,
   todasUnidades, unidadeComPendenciaTermo, unidadeSemPendenciaTermo, unidadesComPendenciaBens, unidadeSemPendenciaBens
 }

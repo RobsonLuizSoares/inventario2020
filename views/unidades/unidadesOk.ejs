@@ -1,0 +1,169 @@
+        
+<%- include('../partials/headerPuro') %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+         <div class="container my-1">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Inventário 2020 - Unidades Ok</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active"><a href="/unidades/todas">Todas Unidades</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <div class="content">
+      <div class='row'>
+        <div class='container my-3'>
+          <button class='btn btn-sm btn-info' onclick='goBack()' type="">Voltar </button>
+        </div>
+      </div>
+      <div class="content">
+        <div class="container-fluid mt-2">
+          <div class="row my-4">
+             <!-- /.col-md-6 -->
+             <div class='col-md-3'>
+              <a href="/unidades/grupoOk/1">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades Presidência
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/ok/2">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades Corregedoria
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/ok/3">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades Procuradoria
+                  </div>
+                </div>
+              </a> 
+             </div> 
+             <div class='col-md-3'>
+              <a href="/unidades/ok/4">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades EJESC
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/ok/5">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades DG
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/ok/6">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades SAO
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3 '>
+              <a href="/unidades/ok/7">
+                <div class="gruposUnidade alert text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades SGP
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/ok/8">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades STI
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/grupoOk/9">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades SJ
+                  </div>
+                </div>
+              </a> 
+             </div>
+             <div class='col-md-3'>
+              <a href="/unidades/grupoOk/10">
+                <div class=" alert gruposUnidade text-center my-3" >
+                  <div class=" text-center text-white">
+                    Unidades ZEs
+                  </div>
+                </div>
+              </a> 
+             </div>
+       
+            <!-- /.col-md-6 -->
+        
+          <!-- /.row -->
+            
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    </div>
+    <div class='container'>
+    <h4 class='text-center'> Todas as Unidades Concluídas</h4>
+      <table class="table table-bordered table-hover">
+        <thead class='thead-light'>
+          <tr class='text-center'>
+            <th scope="col">UL</th>
+            <th scope="col">Unidade</th>
+            <th scope="col">Leitura dos Bens</th>
+            <th scope="col">Entrega do Termo</th>
+          </tr>
+        </thead>
+        <% unidades.forEach(unidade => { %>
+        <tbody class='table-striped'>
+          <tr class='text-center'>
+            <th scope="row"><%= unidade.ul %></th>
+            <td><%= unidade.nome %></td>
+            <td><%= unidade.bens %></td>
+            <td><%= unidade.termo %></td>
+          </tr>
+          
+        </tbody>
+        <% }) %>
+      </table>
+    </div>
+    </div>    
+    
+      <script>
+        function goBack() {
+          window.history.back()
+        }
+      </script>
+
+<%- include('../partials/footer') %>

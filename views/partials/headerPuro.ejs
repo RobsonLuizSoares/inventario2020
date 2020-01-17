@@ -41,9 +41,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <li class="nav-item d-none d-sm-inline-block">
           <a href="/unidades/nova" class="nav-link text-dark">Nova Unidade</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="/unidades/unidadesOk" class="nav-link text-dark">Unidades Concluídas</a>
-        </li>
       </ul>
       <div class='loginUser'>
       <% if('user' in locals) { %>
@@ -81,45 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
-              <a href="/" class="nav-link active">
-                
-                <i class="fas fa-chart-line"></i>
-                <p> &nbsp;
-                  Estatísticas 
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview my-2">
-              <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <p>Unidades Inventariadas: 
-                      <%= JSON.stringify(totalUnidades) %> 
-                    </p>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a href="" class="nav-link ">
-                     <p>Pendências de Termo: <%= JSON.stringify(unidadePendenteTermo) %>  </p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="" class="nav-link">
-                    <p>Termos Entregues: <%= JSON.stringify(unidadeTermoOk) %>  </p>
-                  </a>
-                </li>
-                
-              </ul>
-            </li>
-          </ul>
-        </nav>
-       
-        <!-- /.sidebar-menu -->
+        
       </div>
       <!-- /.sidebar -->
     </aside>

@@ -31,5 +31,8 @@ router.post('/editar/:id', unidadesController.editarProcess.bind(null, models))
 router.get('/info/:id', unidadesController.info.bind(null, models))
 router.post('/info/:id', unidadesController.addComentario.bind(null, models))
 
+router.get('/unidadesOk', unidadesController.unidadesOk.bind(null, models))
+router.get('/grupoOk/:grupo', unidadesController.ok.bind(null, models))
+
 
 module.exports = router
