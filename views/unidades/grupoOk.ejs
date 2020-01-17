@@ -32,7 +32,16 @@
         
         <div class="container">
           <div class="row ">
-               <% unidadesTerminadas.forEach(unidade => { %>
+          <% if(unidadesTerminadas == 0) { %>
+          <div class='container'>
+              <div class='alert alert-danger'>
+                <h5 class='text-center'>Nenhuma unidade concluída nesse grupo</h5>
+              </div>
+          </div>
+          <% } %>
+
+
+            <% unidadesTerminadas.forEach(unidade => { %>
             <div class="col-md-4 my-3">
               <div class="card card-outline text-center " >
                 <div class="card-header text-center" style='min-height: 5rem;'>
