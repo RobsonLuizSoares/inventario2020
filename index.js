@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 const createInitialUser = async () => {
-  const total = await User.count({ username: 'robson' })
+  const total = await User.countDocuments({ username: 'robson' })
   if (total === 0) {
     const user = new User({
       username: 'robson',

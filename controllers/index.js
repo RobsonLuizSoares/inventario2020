@@ -18,12 +18,13 @@ const access = async ({ User }, req, res) => {
 
   if (user) {
     const isValid = await user.checkPassword(password)
-
+    console.log('is Valid', isValid)
     try {
       if (isValid) {
         req.session.user = user
         res.redirect('/unidades')
       } else {
+        console.log('falhou')
         res.redirect('/login')
       }
     } catch (error) {
