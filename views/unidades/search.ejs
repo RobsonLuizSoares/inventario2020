@@ -1,0 +1,53 @@
+<%- include('../partials/headerPure') %>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+         <div class="container-fluid my-3">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">Inventário 2020</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active"><a href="/unidades/todas">Todas Unidades</a></li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <div class='container'>
+
+        <a href="/unidades/buscar"><button class='btn btn-secondary' type="">  Voltar</button></a>
+      
+      <div class='row text-center my-2'>
+            <div class='col-md-2'>
+            </div>
+        <div class='col-md-8'>
+            <% searchNome.forEach( search => { %>
+          <div class='alert gruposUnidade by-3 my-3 py-4'>
+            <div class='row '>
+            <div class='col-md-12'>
+              <a class='text-decoration-none' href="/unidades/info/<%= search._id%>"><h5 class='text-center  mb-3'>Unidade: &nbsp; <%= search.nome %> </h5></a>
+              <div class=' text-white my-2'> <h5 class='my-auto mx-auto'>Entrega do Termo: &nbsp; <%= search.termo %> </h5></div>
+              <div class=' text-white my-2' ><h5 class='my-auto mx-auto'>Leitura dos Bens: &nbsp; <%= search.bens %> </h5></div>
+            </div>
+              <div clas='col-md-4'>
+                <a href="/unidades/editar/<%= search._id %>"><button class='btn btn-warning btn-sm mt-2' type="">Carregar</button></a>
+              </div>
+              
+
+         </div>
+         </div>
+            <% }) %>
+         </div>
+            <div class='col-md-2'>
+            </div>
+       </div>
+      </div>
+    </div>
+    </div>
+  <%- include('../partials/footer') %>
+

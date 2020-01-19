@@ -7,7 +7,7 @@ const unidadesRoute = require('./routes/unidades')
 const indexRoute = require('./routes/index')
 const session = require('express-session')
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 const mongo = 'mongodb+srv://admin:lya250916@inventario2020-h4h53.mongodb.net/test?retryWrites=true&w=majority'
 
 const User = require('./models/User')
@@ -36,6 +36,13 @@ const createInitialUser = async () => {
   }
 }
 
+app.use('/unidades', (req, res, next) => {
+  if ('user' in req.session) {
+    return next()
+  }
+  res.redirect('/login')
+})
+
 app.use((req, res, next) => {
   if ('user' in req.session) {
     res.locals.user = req.session.user
@@ -43,12 +50,6 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/unidades', (req, res, next) => {
-  if ('user' in req.session) {
-    return next()
-  }
-  res.redirect('/login')
-})
 
 app.use('/', indexRoute)
 app.use('/unidades', unidadesRoute)

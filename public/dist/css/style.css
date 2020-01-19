@@ -50,5 +50,13 @@
 }
 
 .loginUser {
-  margin-left: 35vw;
+  margin-left: 20vw;
+
+}
+
+@media only screen and (min-width: 1400px) {
+  .loginUser {
+
+    margin-left: 25vw;
+  }
 }

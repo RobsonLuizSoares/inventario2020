@@ -279,9 +279,22 @@ const ok = async ({ Unidade }, req, res) => {
   res.render('unidades/grupoOk', { unidadesTerminadas })
 }
 
+const searchForm = (req, res) => {
+  res.render('unidades/searchForms')
+}
+
+const search = async ({ Unidade }, req, res) => {
+
+  let regex = new RegExp(req.query['nome'], 'i')
+  const searchNome = await Unidade.find({ 'nome': regex })
+  console.log(searchNome)
+
+
+  res.render('unidades/search', { searchNome })
+}
 
 module.exports = {
-  home, novaForm, novaProcess,
+  home, novaForm, novaProcess, search, searchForm,
   excluir, editarForm, editarProcess,
   info, addComentario, grupos, ok, unidadesOk,
   todasUnidades, unidadeComPendenciaTermo, unidadeSemPendenciaTermo, unidadesComPendenciaBens, unidadeSemPendenciaBens

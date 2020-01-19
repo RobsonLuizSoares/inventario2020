@@ -34,5 +34,9 @@ router.post('/info/:id', unidadesController.addComentario.bind(null, models))
 router.get('/unidadesOk', unidadesController.unidadesOk.bind(null, models))
 router.get('/grupoOk/:grupo', unidadesController.ok.bind(null, models))
 
+//Search
+router.get('/buscar', unidadesController.searchForm)
+router.get('/search', unidadesController.search.bind(null, models))
+
 
 module.exports = router
